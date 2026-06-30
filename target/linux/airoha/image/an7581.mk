@@ -188,7 +188,7 @@ define Device/gemtek_xr1710g-ubi
   DEVICE_DTS := gemtek_xr1710g
   DEVICE_PACKAGES := airoha-en7581-mt7996-npu-firmware fitblk kmod-i2c-an7581 \
                      kmod-hwmon-nct7802 kmod-mt7996-firmware wpad-openssl \
-                     luci-app-airoha-npu
+                     luci-app-airoha-npu rtl8261n-firmware kmod-phy-realtek
   SOC := an7581
   UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
