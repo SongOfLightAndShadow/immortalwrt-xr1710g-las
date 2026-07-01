@@ -191,8 +191,10 @@ define Device/gemtek_xr1710g-ubi
                      luci-app-airoha-npu rtl8261n-firmware kmod-phy-realtek \
                      luci-theme-argon luci-app-argon-config \
                      luci-app-w1700k-fancontrol luci-app-mlo \
-                     luci-app-passwall luci-compat \
-                     luci-i18n-base-ja
+                     luci-app-passwall luci-compat luci \
+                     opkg luci-app-package-manager \
+                     luci-i18n-base-ja luci-i18n-base-zh-cn
+  FEATURES += airoha
   SOC := an7581
   UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
