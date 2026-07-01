@@ -3,31 +3,29 @@
 # === radio0: 2.4GHz 配置 ===
 uci set wireless.radio0.disabled='0'
 uci set wireless.radio0.country='US'
-uci set wireless.radio0.channel='1'       # 2.4G 常用信道 (避免干扰可选1、6、11)
-uci set wireless.radio0.htmode='HE40'     # 强制 40MHz 频宽 (MT7996支持HE格式)
+uci set wireless.radio0.channel='1'
+uci set wireless.radio0.htmode='EHT40'     # Wi-Fi 7 (802.11be)
 uci set wireless.default_radio0.ssid='freedom1'
-uci set wireless.default_radio0.encryption='psk2+ccmp' # 强制 WPA2-PSK (CCMP加密)
+uci set wireless.default_radio0.encryption='psk2+ccmp'
 uci set wireless.default_radio0.key='12345678'
 
 # === radio1: 5GHz 配置 ===
 uci set wireless.radio1.disabled='0'
 uci set wireless.radio1.country='US'
-uci set wireless.radio1.channel='36'      # 5G 常用非 DFS 信道
-uci set wireless.radio1.htmode='HE80'     # 强制 80MHz 频宽
+uci set wireless.radio1.channel='36'
+uci set wireless.radio1.htmode='EHT80'     # Wi-Fi 7 (802.11be)
 uci set wireless.default_radio1.ssid='freedom2'
-# 5G 频段规范推荐 WPA2/WPA3 混合模式，兼顾老设备兼容性与新设备安全性
 uci set wireless.default_radio1.encryption='sae-mixed'
 uci set wireless.default_radio1.key='12345678'
 
 # === radio2: 6GHz 配置 ===
 uci set wireless.radio2.disabled='0'
-uci set wireless.radio2.country='US'
-uci set wireless.radio2.channel='37'      # 6G 常用信道
-uci set wireless.radio2.htmode='HE160'    # 强制 160MHz 频宽
+uci set wireless.radio2.country='JP'         # 日本
+uci set wireless.radio2.channel='37'
+uci set wireless.radio2.htmode='EHT160'    # Wi-Fi 7 (802.11be)
 uci set wireless.default_radio2.ssid='freedom3'
-# 6GHz 频段硬性规范：必须纯 WPA3-SAE，且必须强制开启 802.11w (管理帧保护)
 uci set wireless.default_radio2.encryption='sae'
-uci set wireless.default_radio2.ieee80211w='2'         
+uci set wireless.default_radio2.ieee80211w='2'
 uci set wireless.default_radio2.key='12345678'
 
 uci commit wireless
