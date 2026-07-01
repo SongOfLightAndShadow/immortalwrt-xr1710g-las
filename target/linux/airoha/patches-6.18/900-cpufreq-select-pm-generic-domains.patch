@@ -1,0 +1,11 @@
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -60,6 +60,7 @@ config ARM_AIROHA_SOC_CPUFREQ
+ 	tristate "Airoha EN7581 SoC CPUFreq support"
+ 	depends on ARCH_AIROHA || COMPILE_TEST
+ 	depends on OF
+ 	select PM_OPP
++	select PM_GENERIC_DOMAINS
+ 	default ARCH_AIROHA
+ 	help
+ 	  This adds the CPUFreq driver for Airoha EN7581 SoCs.
