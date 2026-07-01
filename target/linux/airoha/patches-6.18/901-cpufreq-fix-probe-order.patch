@@ -1,0 +1,33 @@
+--- a/drivers/cpufreq/airoha-cpufreq.c
++++ b/drivers/cpufreq/airoha-cpufreq.c
+@@ -57,15 +57,15 @@ static int airoha_cpufreq_probe(struct platform_device *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	/* Set OPP table conf with NOP config_clks */
+-	priv->opp_token = dev_pm_opp_set_config(cpu_dev, &config);
+-	if (priv->opp_token < 0)
+-		return dev_err_probe(dev, priv->opp_token, "Failed to set OPP config\n");
+-
+ 	/* Attach PM for OPP */
+ 	ret = dev_pm_domain_attach_list(cpu_dev, &attach_data,
+ 					&priv->pd_list);
+ 	if (ret)
+-		goto clear_opp_config;
++		return dev_err_probe(dev, ret, "Failed to attach PM domain\n");
++
++	/* Set OPP table conf with NOP config_clks */
++	priv->opp_token = dev_pm_opp_set_config(cpu_dev, &config);
++	if (priv->opp_token < 0)
++		return dev_err_probe(dev, priv->opp_token, "Failed to set OPP config\n");
+ 
+ 	ret = cpufreq_register_driver(&airoha_cpufreq_driver);
+ 	if (ret)
+@@ -xx,xx +xx,xx @@ static void airoha_cpufreq_remove(struct platform_device *pdev)
+ 	struct airoha_cpufreq_priv *priv = platform_get_drvdata(pdev);
+ 
+ 	cpufreq_unregister_driver(&airoha_cpufreq_driver);
+-	dev_pm_domain_detach_list(&priv->pd_list);
+ 	dev_pm_opp_clear_config(priv->opp_token);
++	dev_pm_domain_detach_list(&priv->pd_list);
+ }
