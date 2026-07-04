@@ -192,7 +192,7 @@ define Device/gemtek_xr1710g-ubi
                      luci-theme-argon luci-app-argon-config \
                      luci-app-w1700k-fancontrol luci-app-mlo \
                      luci-app-passwall luci-compat luci \
-                     opkg luci-app-package-manager \
+                     luci-app-package-manager \
                      luci-i18n-base-ja luci-i18n-base-zh-cn
   FEATURES += airoha
   SOC := an7581
